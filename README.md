@@ -16,3 +16,18 @@ and here is what I get then:
 - The spawned task is asynchronous — it is enqueued but not immediately executed.
 
 - Making a spawn tasked does not block the main thread but will be handled later by the executor.
+
+## 1.3 Multiple Spawn and removing drop
+
+### Observations
+I modified the code as asked, like this : 
+
+![1.3 Modified](images/1_3_1.png)
+
+and here is what I get then:
+![1.3 Result](images/1_3_2.png)
+
+### Explanations
+- Each spawn() call enqueues a separate asynchronous task. All tasks begin by printing "howdy!" and then sleep asynchronously for 2 seconds. After the timer elapses, each task continues and prints "done!".
+
+- The output shows that the executor handles multiple tasks concurrently and schedules them independently.
